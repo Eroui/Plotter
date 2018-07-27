@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Compiled class file
 *.class
 
@@ -48,4 +47,3 @@ hs_err_pid*
 /dist/
 /nbdist/
 /.nb-gradle/
->>>>>>> First commit
