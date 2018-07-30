@@ -13,13 +13,14 @@ Here i will describe the grammar I'm using to analyse and compile and math funct
 - NUM   : A number (0-9)
 - WORD  : A word, generaly the variable x or a math function like sin cos ...
 - $     : Stands for end of line or string
-
 </pre>
 
-> f &rightarrow; E$ 
-> E &rightarrow; T | -T | T + T | T - T
-> T &rightarrow; F | F * F | F / F 
-> F &rightarrow; NUM | WORD | (E)
+<pre>
+f &rightarrow; E
+E &rightarrow; T    | -T    | T + T  | T - T
+T &rightarrow; F    | F * F | F / F 
+F &rightarrow; NUM  | WORD  | (E)
+</pre>
 
 <pre>
 - A function is an Expression followed by the end of string.
