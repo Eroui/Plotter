@@ -1,7 +1,7 @@
 # Plotter
 A Math Functions Plotter
 
-##Grammar
+## Grammar
 
 Here i will describe the grammar I'm using to analyse and compile and math function expression.
 
