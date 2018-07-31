@@ -1,5 +1,6 @@
 package com.math.plotter.models.impl;
 
+import com.math.plotter.models.Expression;
 import org.junit.Test;
 
 import java.util.Random;
@@ -7,6 +8,9 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 public class AdditionTest {
+
+    private final Random r = new Random();
+    private final Double error = 1e-9;
 
     @Test
     public void AdditionOfConstants() {
@@ -19,7 +23,7 @@ public class AdditionTest {
         assertEquals("Addition Failed Test",
                 addition.value(r.nextDouble()),
                 value1 + value2,
-                1e-9);
+                error);
     }
 
     @Test
@@ -34,6 +38,20 @@ public class AdditionTest {
         assertEquals("Addition Of Addition Failed Test",
                 addition.value(r.nextDouble()),
                 value + value + value,
-                1e-9);
+                error);
+    }
+
+    @Test
+    public void AdditionOfVariable() {
+        double value = r.nextDouble();
+        Expression addition = new Addition(
+                new Variable(),
+                new Variable()
+        );
+
+        assertEquals("Failed Addition of Variable Test",
+                addition.value(value),
+                value + value,
+                error);
     }
 }
