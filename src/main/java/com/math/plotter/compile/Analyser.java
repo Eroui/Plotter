@@ -1,13 +1,18 @@
 package com.math.plotter.compile;
 
 import com.math.plotter.models.Expression;
+import com.math.plotter.models.UnaryExpression;
 import com.math.plotter.models.impl.*;
+import com.math.plotter.models.impl.functions.Cos;
+import com.math.plotter.models.impl.functions.Sin;
+import com.math.plotter.models.impl.functions.Tan;
 
 import java.io.StreamTokenizer;
 import java.io.StringReader;
 
 // TODO implement Tests
 // TODO Refactor
+// TODO Add comments after refactoring
 public class Analyser {
 
     private StreamTokenizer lexical;
@@ -77,9 +82,31 @@ public class Analyser {
             lexical.nextToken();
 
         } else if(lexical.ttype == StreamTokenizer.TT_WORD) {
+            String token = lexical.sval.toLowerCase();
 
-            // TODO handle variable case
-            // TODO handle functions (log, exp ...) case
+            if(token.equals("x")) {
+                result = new Variable();
+                lexical.nextToken();
+            } else {
+
+                if(token.equals("sin")) result = new Sin();
+                else if(token.equals("cos")) result = new Cos();
+                else if(token.equals("tan")) result = new Tan();
+                else
+                    throw new Exception("Unexpected word " + token);
+
+                lexical.nextToken();
+                if(lexical.ttype != '(')
+                    throw new Exception("'(' Expected");
+
+                lexical.nextToken();
+                ((UnaryExpression) result).setArgument(analyseExpression());
+
+                if (lexical.ttype != ')')
+                    throw new Exception(") Expected");
+                lexical.nextToken();
+            }
+
 
         } else if(lexical.ttype == '(') {
             lexical.nextToken();
