@@ -5,6 +5,10 @@ import com.math.plotter.models.UnaryExpression;
 
 public class Tan extends UnaryExpression {
 
+    public Tan() {
+        super();
+    }
+
     public Tan(Expression argument) {
         super(argument);
     }

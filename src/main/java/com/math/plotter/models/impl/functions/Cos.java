@@ -5,6 +5,10 @@ import com.math.plotter.models.UnaryExpression;
 
 public class Cos extends UnaryExpression {
 
+    public Cos() {
+        super();
+    }
+
     public Cos(Expression argument) {
         super(argument);
     }

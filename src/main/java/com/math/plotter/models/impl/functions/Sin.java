@@ -5,6 +5,10 @@ import com.math.plotter.models.UnaryExpression;
 
 public class Sin extends UnaryExpression {
 
+    public Sin() {
+        super();
+    }
+
     public Sin(Expression argument) {
         super(argument);
     }
