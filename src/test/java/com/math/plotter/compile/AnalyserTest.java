@@ -43,7 +43,6 @@ public class AnalyserTest {
                 error);
     }
 
-    // FIXME Failing Multiplication Test
     @Test
     public void MultiplicationAnalyserTest() throws Exception {
         double value = r.nextDouble();

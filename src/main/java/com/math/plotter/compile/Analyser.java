@@ -47,11 +47,12 @@ public class Analyser {
         }
 
         while(lexical.ttype == '+' || lexical.ttype == '-') {
+            boolean isAddition = lexical.ttype == '+';
             lexical.nextToken();
 
             Expression term = analyseTerm();
 
-            if(lexical.ttype == '+')
+            if(isAddition)
                 result = new Addition(result, term);
             else
                 result = new Substruction(result, term);
@@ -64,9 +65,10 @@ public class Analyser {
         Expression result = this.analyseFactor();
 
         while(lexical.ttype == '*' || lexical.ttype == '/') {
+            boolean isMultiplication = lexical.ttype == '*';
             lexical.nextToken();
             Expression factor = analyseFactor();
-            if(lexical.ttype == '*')
+            if(isMultiplication)
                 result = new Multiplication(result, factor);
             else
                 result = new Division(result, factor);
