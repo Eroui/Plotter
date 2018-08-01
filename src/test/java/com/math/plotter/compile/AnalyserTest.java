@@ -113,6 +113,20 @@ public class AnalyserTest {
     }
 
     @Test
+    public void negativeAnalyserTest() throws Exception {
+        double value = r.nextDouble();
+        Analyser analyser = new Analyser("-x");
+
+        Expression negative_actual = analyser.analyse();
+        Expression negative_expected = new Negative(new Variable());
+
+        assertEquals("Failed Negative Analyser Test",
+                negative_actual.value(value),
+                negative_expected.value(value),
+                error);
+    }
+
+    @Test
     public void CosAnalyserTest() throws Exception {
         double value = r.nextDouble();
         Analyser analyser = new Analyser("cos(x)*x");
