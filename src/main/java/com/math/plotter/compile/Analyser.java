@@ -43,7 +43,7 @@ public class Analyser {
         Expression result = this.analyseTerm();
 
         if(isNegative) {
-            result = new Substruction(new Constant(0), result); // TODO implement Negative Expression
+            result = new Negative(result);
         }
 
         while(lexical.ttype == '+' || lexical.ttype == '-') {
